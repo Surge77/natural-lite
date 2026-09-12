@@ -1,5 +1,7 @@
 import { Icon } from '@/components/primitives';
+import { useMediaQuery } from '@/hooks';
 import { cn } from '@/lib/cn';
+import { MD_BREAKPOINT_QUERY } from '@/lib/constants';
 import type { FooterColumn as FooterColumnData } from '@/types';
 
 export interface FooterColumnProps {
@@ -8,15 +10,22 @@ export interface FooterColumnProps {
 }
 
 /**
- * One footer link column.
+ * One footer link column: a native, keyboard-operable accordion on phones, and
+ * an open column from tablet up.
  *
- * Built on <details> so it is a collapsed accordion on phones and a visible
- * native, keyboard-operable accordion on phones — no JavaScript, no ARIA to
- * column from tablet up — no JavaScript or ARIA state to keep in sync.
+ * `open` has to be driven from the media query rather than from CSS on the list.
+ * A closed <details> hides everything but its summary through the UA's
+ * ::details-content, which sets content-visibility: hidden — a `display`
+ * utility on the <ul> cannot override that, so the links vanished at desktop
+ * width. Passing undefined below `md` rather than false leaves the element
+ * uncontrolled there, so a re-render cannot collapse a column the reader opened.
  */
 export function FooterColumn({ column, className }: FooterColumnProps) {
+  const isDesktop = useMediaQuery(MD_BREAKPOINT_QUERY);
+
   return (
     <details
+      open={isDesktop || undefined}
       className={cn(
         'group border-b border-nl-cream-50/12 md:border-0',
         // Comp separates the footer columns with a hairline from tablet up.
