@@ -28,3 +28,6 @@ dist-ssr
 shot.png
 scratch-*.png
 coverage
+
+# Client-supplied source photography (processed output in public/assets is committed)
+assets-source/

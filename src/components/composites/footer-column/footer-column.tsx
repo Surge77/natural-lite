@@ -10,20 +10,19 @@ export interface FooterColumnProps {
 /**
  * One footer link column.
  *
- * Built on <details> so it is an open column on tablet and desktop and a
+ * Built on <details> so it is a collapsed accordion on phones and a visible
  * native, keyboard-operable accordion on phones — no JavaScript, no ARIA to
- * keep in sync. The `md:open` reset is why the marker is suppressed.
+ * column from tablet up — no JavaScript or ARIA state to keep in sync.
  */
 export function FooterColumn({ column, className }: FooterColumnProps) {
   return (
     <details
       className={cn(
-        'group border-b border-nl-cream-50/12 md:border-0 md:open',
+        'group border-b border-nl-cream-50/12 md:border-0',
         // Comp separates the footer columns with a hairline from tablet up.
         'md:border-l md:border-nl-cream-50/12 md:pl-5',
         className,
       )}
-      open
     >
       <summary className="flex min-h-9 cursor-pointer list-none items-center justify-between text-label font-semibold text-nl-cream-50 md:pointer-events-none md:min-h-0 md:cursor-default">
         <span className="flex flex-col">
@@ -37,7 +36,7 @@ export function FooterColumn({ column, className }: FooterColumnProps) {
         />
       </summary>
 
-      <ul className="flex flex-col pb-2 md:pt-2 md:pb-0">
+      <ul className="hidden flex-col pb-2 group-open:flex md:flex md:pt-2 md:pb-0">
         {column.links.map((link) => (
           <li key={link.id}>
             <a

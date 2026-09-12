@@ -12,7 +12,7 @@ const FOCUSABLE = [
 /**
  * Keeps Tab inside an open overlay and restores focus to the trigger on close.
  *
- * Required for the mobile drawer and the search overlay: without it, Tab walks
+ * Required for the navigation, search, and cart overlays: without it, Tab walks
  * into the page behind the overlay, which is invisible and scroll-locked.
  */
 export function useFocusTrap(

@@ -32,8 +32,8 @@ export function IconButton({
       aria-label={label}
       className={cn(
         'relative inline-flex size-11 items-center justify-center rounded-full',
-        'transition-colors duration-(--duration-base) ease-(--ease-brand)',
-        'hover:bg-nl-green-900/8',
+        'transition-[color,background-color,transform] duration-(--duration-base) ease-(--ease-brand)',
+        'hover:bg-nl-green-900/8 active:scale-[0.96] motion-reduce:transform-none',
         className,
       )}
       {...rest}

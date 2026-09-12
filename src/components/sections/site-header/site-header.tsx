@@ -2,7 +2,9 @@ import { useState } from 'react';
 
 import { Container, IconButton } from '@/components/primitives';
 import { CartBadge, Logo, NavItem } from '@/components/composites';
+import { CartDrawer } from '@/components/sections/cart-drawer';
 import { MobileNavDrawer } from '@/components/sections/mobile-nav-drawer';
+import { SearchDrawer } from '@/components/sections/search-drawer';
 import { NAV_ITEMS } from '@/data';
 import { useStickyHeader } from '@/hooks';
 import { cn } from '@/lib/cn';
@@ -16,6 +18,8 @@ import { cn } from '@/lib/cn';
  */
 export function SiteHeader() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const { sentinelRef, isCondensed } = useStickyHeader();
 
   return (
@@ -37,11 +41,11 @@ export function SiteHeader() {
               isCondensed ? 'h-16' : 'h-[4.75rem] lg:h-[5.25rem]',
             )}
           >
-            <a href="/" className="shrink-0" aria-label="Natural Lite — home">
+            <a href="#top" className="shrink-0" aria-label="Natural Lite — home">
               <Logo compact={isCondensed} />
             </a>
 
-            <nav aria-label="Primary" className="hidden lg:block">
+            <nav aria-label="Primary" className="hidden xl:block">
               <ul className="flex items-center gap-6 xl:gap-8">
                 {NAV_ITEMS.map((item) => (
                   <NavItem key={item.id} item={item} />
@@ -53,20 +57,26 @@ export function SiteHeader() {
               <IconButton
                 icon="search"
                 label="Search products"
-                className="hidden sm:inline-flex"
+                aria-expanded={isSearchOpen}
+                aria-controls="search-drawer"
+                onClick={() => {
+                  setIsCartOpen(false);
+                  setIsSearchOpen(true);
+                }}
               />
-              <IconButton
-                icon="account"
-                label="Your account"
-                className="hidden sm:inline-flex"
+              <CartBadge
+                isOpen={isCartOpen}
+                onClick={() => {
+                  setIsSearchOpen(false);
+                  setIsCartOpen(true);
+                }}
               />
-              <CartBadge />
               <IconButton
                 icon="menu"
                 label="Open navigation menu"
                 aria-expanded={isDrawerOpen}
                 onClick={() => setIsDrawerOpen(true)}
-                className="lg:hidden"
+                className="xl:hidden"
               />
             </div>
           </div>
@@ -74,6 +84,8 @@ export function SiteHeader() {
       </header>
 
       <MobileNavDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
+      <SearchDrawer isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </>
   );
 }

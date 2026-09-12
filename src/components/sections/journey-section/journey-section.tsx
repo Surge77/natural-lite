@@ -15,7 +15,7 @@ const HEADING_ID = 'journey-heading';
  */
 export function JourneySection() {
   return (
-    <Section labelledBy={HEADING_ID} tone="cream">
+    <Section id="journey" labelledBy={HEADING_ID} tone="cream" spacing="compact">
       <Container>
         <SectionHeading id={HEADING_ID}>{SECTION_HEADINGS.journey}</SectionHeading>
 

@@ -15,7 +15,9 @@ import process from 'node:process';
 
 import sharp from 'sharp';
 
-const SOURCE_DIR = process.argv[2] ?? 'C:/Users/tdmne/Downloads';
+// Client photography lives outside the repo (gitignored) — only the processed
+// output in OUT_DIR is committed. Override with argv[2] to point elsewhere.
+const SOURCE_DIR = process.argv[2] ?? 'assets-source';
 const OUT_DIR = 'public/assets/products';
 
 /** Source filename -> product slug. Order confirmed against the pouch labels. */
@@ -115,17 +117,23 @@ for (const [file, slug] of SOURCES) {
   const accent = accentColor(data, info.width, info.height, info.channels);
 
   // One shared frame: contain on white so pouches of differing widths align.
-  const framed = sharp(source)
+  const framed = await sharp(source)
     .extract(box)
     .resize(FRAME.width, FRAME.height, {
       fit: 'contain',
       background: { r: 255, g: 255, b: 255, alpha: 0 },
-    });
+    })
+    .toBuffer();
 
   for (const width of WIDTHS) {
     const suffix = width === FRAME.width ? '@2x' : '';
     const base = path.join(OUT_DIR, `${slug}${suffix}`);
-    const resized = () => framed.clone().resize({ width });
+    const resized = () =>
+      sharp(framed).resize({
+        width,
+        height: Math.round((width / FRAME.width) * FRAME.height),
+        fit: 'fill',
+      });
     // AVIF first, WebP as the <img src>. No PNG: it costs ~40x the bytes for
     // a fallback no current browser needs, and blows the page weight budget.
     await resized().avif({ quality: 62 }).toFile(`${base}.avif`);

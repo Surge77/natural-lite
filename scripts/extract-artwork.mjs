@@ -11,7 +11,9 @@
  * originals before launch. Dropping a higher-resolution file with the same name
  * into public/assets/lifestyle/ replaces it with no code change.
  *
- * Dev-only. Usage: npm run assets:artwork
+ * Superseded by the AI-assisted photography in docs/IMAGE-GENERATION.md; kept
+ * to document how the original comp crops were produced.
+ * Dev-only. Usage: node scripts/extract-artwork.mjs [comp]
  */
 import { mkdir } from 'node:fs/promises';
 import path from 'node:path';
@@ -19,9 +21,7 @@ import process from 'node:process';
 
 import sharp from 'sharp';
 
-const REFERENCE =
-  process.argv[2] ??
-  'C:/Users/tdmne/.claude/image-cache/b2dc287c-c816-4949-b0c4-c209137bb081/1.png';
+const REFERENCE = process.argv[2] ?? 'assets-source/design-comp.jpeg';
 
 const OUT_DIR = 'public/assets/lifestyle';
 const CARD_OUT_DIR = 'public/assets/products';

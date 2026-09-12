@@ -18,26 +18,29 @@ seeded so the cart could total correctly:
 
 All ten live in `src/data/products.ts` as integer paise.
 
-Because the comp shows no price, **the card does not display one**. The value is
-still carried on each product and is announced as part of the add-to-cart
-button's accessible name, so the cart totals correctly and screen-reader users
-hear it. Showing it visibly is a one-block change in `product-card.tsx`.
+The redesigned cards display these prices beside the 100g weight and use them in
+the working cart drawer. They remain provisional until the client confirms them.
 
 **Ask:** confirm real prices, and whether price should be visible on the card.
 
 ## 2. Fonts are inferred
 
 The comp is flat artwork with no font spec. Shipped as **Playfair Display**
-(display serif) + **Inter** (interface sans), self-hosted, Latin subset only.
-These are the closest free match to the lettering in the comp.
+(display serif) + **Outfit** (interface sans), self-hosted, Latin subset only.
+Outfit gives the small interface copy more character and readability than the
+previous Inter approximation.
 
 **Ask:** the real font names from the designer's source file. Swapping is two
 lines in `src/styles/tokens.css`.
 
-## 3. Hero seal and statement are inside the photograph
+## 3. Hero imagery requires approval
 
-See `ASSET-MANIFEST.md` §3. Requesting a clean hero photograph lets these become
-live, resizable, translatable text.
+The hero, journey, story, testimonial, and community photographs are now
+high-resolution AI-assisted drafts based on the approved visual direction. The
+hero seal and statement are live, resizable, translatable UI.
+
+**Ask:** approve the new art direction or supply documentary brand photography
+for each slot described in `ASSET-MANIFEST.md`.
 
 ## 4. Product categories
 
@@ -97,3 +100,6 @@ URLs were inferred. **Ask:** real URLs for all four.
   Trust band). Built exactly as drawn; flagged only for awareness.
 - **No autoplay on the testimonial carousel.** Moving text a reader cannot pause
   fails WCAG 2.2. Swipe, arrows and dots are all available.
+- **No fake destinations.** Navigation and footer links now point to existing
+  page sections, email, WhatsApp, or verified external destinations. Missing
+  legal and account pages are not presented as working controls.

@@ -13,7 +13,9 @@ export function RootLayout({ children }: { readonly children: ReactNode }) {
       <SkipLink targetId={MAIN_ID} />
       <AnnouncementBar />
       <SiteHeader />
-      <main id={MAIN_ID}>{children}</main>
+      <main id={MAIN_ID} tabIndex={-1}>
+        {children}
+      </main>
       <SiteFooter />
     </>
   );

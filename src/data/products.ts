@@ -13,24 +13,23 @@ export const PRODUCT_BENEFITS: readonly IconLabel[] = [
 
 const WEIGHT_GRAMS = 100;
 
-/**
- * The grid shot: the pouch surrounded by the produce it is made from, exactly
- * as composed in the comp. Cropped from the reference by `assets:artwork`.
- *
- * The client's own bare-pouch photographs are higher resolution and remain at
- * `/assets/products/<slug>.webp` for a future product page, but they show the
- * pouch alone and would not match the approved grid.
- */
-function cardImage(slug: string, name: string): ImageAsset {
+/** Uses the supplied pouch photography rather than a screenshot crop. */
+function productImage(slug: string, name: string): ImageAsset {
   return {
-    src: `/assets/products/${slug}-card.webp`,
-    alt: `Natural Lite Premium ${name} pouch beside the fresh ${name.replace(' Powder', '').toLowerCase()} it is made from`,
-    width: 504,
-    height: 428,
+    src: `/assets/products/${slug}@2x.webp`,
+    alt: `Natural Lite Premium ${name} pouch`,
+    width: 440,
+    height: 660,
     placeholderColor: '#fbf7f0',
     sources: [
-      { type: 'image/avif', srcSet: `/assets/products/${slug}-card.avif` },
-      { type: 'image/webp', srcSet: `/assets/products/${slug}-card.webp` },
+      {
+        type: 'image/avif',
+        srcSet: `/assets/products/${slug}.avif 220w, /assets/products/${slug}@2x.avif 440w`,
+      },
+      {
+        type: 'image/webp',
+        srcSet: `/assets/products/${slug}.webp 220w, /assets/products/${slug}@2x.webp 440w`,
+      },
     ],
   };
 }
@@ -71,7 +70,7 @@ export const PRODUCTS: readonly Product[] = SEEDS.map((seed) => ({
   accentColor: seed.accentColor,
   weightGrams: WEIGHT_GRAMS,
   priceInPaise: seed.priceInPaise,
-  image: cardImage(seed.slug, seed.name),
+  image: productImage(seed.slug, seed.name),
   benefits: PRODUCT_BENEFITS,
 }));
 

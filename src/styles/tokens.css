@@ -46,7 +46,7 @@
 
   /* ------------------------------------------------------------ typography */
   --font-display: 'Playfair Display Variable', 'Playfair Display', Georgia, serif;
-  --font-sans: 'Inter Variable', Inter, system-ui, -apple-system, sans-serif;
+  --font-sans: 'Outfit Variable', Outfit, system-ui, -apple-system, sans-serif;
 
   /* Fluid between the 360px and 1280px viewports; no breakpoint jumps. */
   --text-display-xl: clamp(2.125rem, 1.658rem + 2.076vw, 3.375rem);
@@ -62,16 +62,16 @@
   --text-stat: clamp(1.625rem, 1.429rem + 0.87vw, 2.125rem);
   --text-stat--line-height: 1.1;
 
-  --text-body-lg: clamp(0.9375rem, 0.889rem + 0.217vw, 1.0625rem);
+  --text-body-lg: clamp(1rem, 0.951rem + 0.217vw, 1.125rem);
   --text-body-lg--line-height: 1.65;
 
-  --text-body: clamp(0.875rem, 0.851rem + 0.109vw, 0.9375rem);
+  --text-body: clamp(0.9375rem, 0.913rem + 0.109vw, 1rem);
   --text-body--line-height: 1.6;
 
-  --text-label: clamp(0.75rem, 0.726rem + 0.109vw, 0.8125rem);
+  --text-label: clamp(0.8125rem, 0.788rem + 0.109vw, 0.875rem);
   --text-label--line-height: 1.4;
 
-  --text-caption: clamp(0.625rem, 0.588rem + 0.163vw, 0.719rem);
+  --text-caption: clamp(0.75rem, 0.713rem + 0.163vw, 0.844rem);
   --text-caption--line-height: 1.4;
   --text-caption--letter-spacing: 0.06em;
 

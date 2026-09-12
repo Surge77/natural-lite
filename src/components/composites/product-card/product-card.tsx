@@ -27,31 +27,40 @@ export function ProductCard({ product, className }: ProductCardProps) {
 
   return (
     <article
+      id={`product-${product.id}`}
       style={{ '--product-accent': product.accentColor } as CSSProperties}
       className={cn(
-        'group relative flex flex-col overflow-hidden rounded-lg border border-nl-sand-400 bg-nl-cream-50',
+        'group relative flex scroll-mt-28 flex-col overflow-hidden rounded-xl border border-nl-sand-400/80 bg-nl-cream-50',
         'shadow-card transition-[box-shadow,transform,border-color] duration-(--duration-base) ease-(--ease-brand)',
         'hover:-translate-y-0.5 hover:border-(--product-accent)/35 hover:shadow-card-hover',
         'motion-reduce:transform-none motion-reduce:transition-none',
         className,
       )}
     >
-      <div className="relative">
-        {/* Accent wash on hover — the pouch's own colour, kept faint. */}
+      <div className="relative bg-[radial-gradient(circle_at_50%_72%,color-mix(in_srgb,var(--product-accent)_14%,transparent)_0%,transparent_58%)]">
         <span
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-10 bg-(--product-accent) opacity-0 transition-opacity duration-(--duration-base) group-hover:opacity-[0.06]"
         />
-        <ResponsiveImage image={product.image} sizes={IMAGE_SIZES} className="w-full bg-transparent" />
+        <ResponsiveImage
+          image={product.image}
+          sizes={IMAGE_SIZES}
+          aspectRatio="6 / 5"
+          className="w-full bg-transparent"
+          imageClassName="object-contain px-3 pt-3 mix-blend-multiply transition-transform duration-(--duration-slow) ease-(--ease-brand) group-hover:scale-[1.025] motion-reduce:transform-none"
+        />
       </div>
 
-      <div className="flex flex-1 flex-col items-center gap-0.5 px-2.5 pt-1.5 pb-2.5 text-center">
+      <div className="flex flex-1 flex-col px-3 pt-2.5 pb-3 text-left">
         <h3 className="font-sans text-label font-semibold text-nl-ink-900">{product.name}</h3>
+        <div className="mt-1 flex items-baseline justify-between gap-2">
+          <span className="text-body font-semibold text-nl-green-900 tabular-nums">
+            {formatCurrency(product.priceInPaise)}
+          </span>
+          <span className="text-caption text-nl-ink-500">{product.weightGrams} g</span>
+        </div>
 
-        {/* Price is intentionally absent: the approved comp shows none. It is
-            still carried on the product and announced with the add control. */}
-
-        <div className="mt-1.5 w-full">
+        <div className="mt-auto w-full pt-3">
           {quantity > 0 ? (
             <QuantityStepper
               quantity={quantity}
@@ -66,7 +75,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
               onClick={() => add(product.id)}
               aria-label={`Add ${product.name}, ${formatCurrency(product.priceInPaise)} for ${product.weightGrams} grams, to cart`}
             >
-              Shop Now
+              Add to cart
             </Button>
           )}
         </div>

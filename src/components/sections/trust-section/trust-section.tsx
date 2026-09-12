@@ -12,7 +12,7 @@ const HEADING_ID = 'trust-heading';
  */
 export function TrustSection() {
   return (
-    <Section labelledBy={HEADING_ID} tone="cream">
+    <Section id="trust" labelledBy={HEADING_ID} tone="cream" spacing="compact">
       <Container>
         <SectionHeading id={HEADING_ID} withLeaf>
           {SECTION_HEADINGS.trust}

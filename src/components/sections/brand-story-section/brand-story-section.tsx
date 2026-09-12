@@ -36,7 +36,13 @@ function BotanicalOrnament() {
  */
 export function BrandStorySection() {
   return (
-    <Section labelledBy={HEADING_ID} tone="soft" className="relative overflow-hidden">
+    <Section
+      id="brand-story"
+      labelledBy={HEADING_ID}
+      tone="soft"
+      spacing="spacious"
+      className="relative overflow-hidden"
+    >
       <Container className="relative">
         <BotanicalOrnament />
 

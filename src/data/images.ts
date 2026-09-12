@@ -16,7 +16,13 @@ export function lifestyleImage(
   width: number,
   height: number,
   placeholderColor = '#e9dfcc',
+  retinaWidth?: number,
 ): ImageAsset {
+  const srcSet = (extension: 'avif' | 'webp') =>
+    retinaWidth
+      ? `/assets/lifestyle/${id}.${extension} ${width}w, /assets/lifestyle/${id}@2x.${extension} ${retinaWidth}w`
+      : `/assets/lifestyle/${id}.${extension}`;
+
   return {
     src: `/assets/lifestyle/${id}.webp`,
     alt,
@@ -24,8 +30,8 @@ export function lifestyleImage(
     height,
     placeholderColor,
     sources: [
-      { type: 'image/avif', srcSet: `/assets/lifestyle/${id}.avif` },
-      { type: 'image/webp', srcSet: `/assets/lifestyle/${id}.webp` },
+      { type: 'image/avif', srcSet: srcSet('avif') },
+      { type: 'image/webp', srcSet: srcSet('webp') },
     ],
   };
 }
