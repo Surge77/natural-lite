@@ -1,0 +1,140 @@
+/**
+ * Natural Lite design tokens.
+ *
+ * Colour values were sampled from the client's reference comp with
+ * `npm run tokens:extract` — they are measured, not estimated. Text colours
+ * carry a small correction because the 759px reference antialiases type
+ * against its background, biasing raw samples toward the surface colour.
+ */
+
+@theme {
+  /* ---------------------------------------------------------------- colour */
+  /* Forest green — announcement bar, footer, primary buttons, headings. */
+  --color-nl-green-950: #1b2a16;
+  --color-nl-green-900: #263925;
+  --color-nl-green-800: #2e4a2c;
+  --color-nl-green-600: #4a7a3c;
+
+  /* Maroon — impact band, second headline line, product accents. */
+  --color-nl-maroon-900: #662028;
+  --color-nl-maroon-700: #77303a;
+
+  /* Terracotta — the "LITE" half of the wordmark. */
+  --color-nl-rust-600: #a8453e;
+  --color-nl-rust-400: #c4675a;
+
+  /* The fresh green of the sprout above the wordmark. */
+  --color-nl-leaf-500: #62a83a;
+  --color-nl-leaf-700: #4f8a2a;
+
+  /* Gold. -500 is DECORATIVE ONLY (2.31:1 on cream — fails AA for text).
+     Use -700 (4.74:1) for anything that carries words. */
+  --color-nl-gold-500: #bf9c55;
+  --color-nl-gold-700: #8a6b28;
+
+  /* Warm neutrals — page and band surfaces, lightest to warmest. */
+  --color-nl-cream-50: #fdf9f3;
+  --color-nl-cream-100: #fbf6f0;
+  --color-nl-cream-200: #fbf3ea;
+  --color-nl-cream-300: #f9f1e6;
+  --color-nl-sand-400: #e8dcc8;
+
+  /* Ink. */
+  --color-nl-ink-900: #2a2822;
+  --color-nl-ink-700: #4a4b42;
+  --color-nl-ink-500: #6b6a5f;
+
+  /* ------------------------------------------------------------ typography */
+  --font-display: 'Playfair Display Variable', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter Variable', Inter, system-ui, -apple-system, sans-serif;
+
+  /* Fluid between the 360px and 1280px viewports; no breakpoint jumps. */
+  --text-display-xl: clamp(2.125rem, 1.658rem + 2.076vw, 3.375rem);
+  --text-display-xl--line-height: 1.12;
+  --text-display-xl--letter-spacing: -0.015em;
+
+  --text-display-lg: clamp(1.375rem, 1.179rem + 0.87vw, 1.875rem);
+  --text-display-lg--line-height: 1.18;
+
+  --text-display-md: clamp(1.1875rem, 1.065rem + 0.543vw, 1.5rem);
+  --text-display-md--line-height: 1.25;
+
+  --text-stat: clamp(1.625rem, 1.429rem + 0.87vw, 2.125rem);
+  --text-stat--line-height: 1.1;
+
+  --text-body-lg: clamp(0.9375rem, 0.889rem + 0.217vw, 1.0625rem);
+  --text-body-lg--line-height: 1.65;
+
+  --text-body: clamp(0.875rem, 0.851rem + 0.109vw, 0.9375rem);
+  --text-body--line-height: 1.6;
+
+  --text-label: clamp(0.75rem, 0.726rem + 0.109vw, 0.8125rem);
+  --text-label--line-height: 1.4;
+
+  --text-caption: clamp(0.625rem, 0.588rem + 0.163vw, 0.719rem);
+  --text-caption--line-height: 1.4;
+  --text-caption--letter-spacing: 0.06em;
+
+  /* ----------------------------------------------------------- breakpoints */
+  --breakpoint-xs: 22.5rem; /* 360 */
+  --breakpoint-sm: 30rem; /* 480 */
+  --breakpoint-md: 48rem; /* 768 */
+  --breakpoint-lg: 64rem; /* 1024 */
+  --breakpoint-xl: 80rem; /* 1280 */
+  --breakpoint-2xl: 96rem; /* 1536 */
+
+  /* --------------------------------------------------------------- surface */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  --shadow-card: 0 1px 2px rgb(42 40 34 / 0.05);
+  --shadow-card-hover: 0 8px 24px rgb(42 40 34 / 0.1);
+  --shadow-header: 0 2px 16px rgb(42 40 34 / 0.08);
+
+  /* ---------------------------------------------------------------- motion */
+  --ease-brand: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+}
+
+/* Layout constants that are not Tailwind theme namespaces. */
+:root {
+  /* The single source of the page's horizontal rhythm. Container consumes both,
+     and any full-bleed band that needs to line up with it uses the inset below
+     rather than restating the arithmetic. */
+  --nl-container-max: 84rem; /* 1344 */
+  --nl-gutter: 1rem;
+
+  /*
+   * Left inset that lines a full-bleed child up with Container's content edge.
+   *
+   * Deliberately `100%` and not `100vw`: a percentage resolves against the
+   * parent's width, which excludes the scrollbar, whereas `100vw` includes it.
+   * Using `100vw` here is what pushed the hero copy off the page's left margin.
+   */
+  --nl-container-inset: max(
+    var(--nl-gutter),
+    calc((100% - var(--nl-container-max)) / 2 + var(--nl-gutter))
+  );
+
+  --nl-header-height: 5.5rem;
+  --nl-header-height-condensed: 4rem;
+
+  /* Overridden per-card by ProductCard from the product's own accent colour. */
+  --product-accent: var(--color-nl-green-800);
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --nl-gutter: 1.25rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --nl-gutter: 1.5rem;
+  }
+}

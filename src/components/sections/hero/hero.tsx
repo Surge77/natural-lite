@@ -1,0 +1,72 @@
+import { Button, OrnamentDivider, ResponsiveImage } from '@/components/primitives';
+import { TrustItem } from '@/components/composites';
+import { HERO, HERO_SCENE, TRUST_MARKS } from '@/data';
+
+const HEADING_ID = 'hero-heading';
+
+/**
+ * The opening band.
+ *
+ * Copy on the left over the cream ground; everything to its right is one
+ * photograph, exactly as composed in the comp — the woman, the five pouches,
+ * the produce, the counter, the gold seal and the brand statement all belong to
+ * that single scene rather than being separate elements.
+ *
+ * The two columns split the band 38/62 as the comp does, and the copy is inset
+ * with `--nl-container-inset` so its left edge matches every heading further
+ * down the page. Both are percentages of this band, never `vw`: viewport units
+ * include the scrollbar, which is what previously shifted the copy right.
+ *
+ * The scene is the LCP element, so it is the one image on the page marked
+ * `priority`.
+ */
+export function Hero() {
+  return (
+    <section aria-labelledby={HEADING_ID} className="relative overflow-hidden bg-nl-cream-300">
+      {/* Matches the photograph's own ground so the two meet without a seam. */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(100deg,#fbf4e9_0%,#f7efe2_42%,#f3ebdd_100%)]"
+      />
+
+      <div className="relative flex flex-col lg:flex-row lg:items-center">
+        {/*
+          Left padding mirrors Container's gutter so the headline lines up with
+          every heading further down the page.
+        */}
+        <div className="px-(--nl-gutter) pt-5 pb-4 lg:w-[38%] lg:shrink-0 lg:py-6 lg:pr-4 lg:pl-(--nl-container-inset)">
+          <h1 id={HEADING_ID} className="max-w-[15ch] text-display-xl">
+            <span className="block text-nl-green-900">{HERO.headlineLeading}</span>{' '}
+            <span className="block text-nl-maroon-700">{HERO.headlineTrailing}</span>
+          </h1>
+
+          <p className="mt-2.5 text-body text-nl-ink-700">{HERO.subheading}</p>
+          <OrnamentDivider width={140} className="mt-2.5" />
+
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Button trailingIcon="cart">{HERO.primaryCta}</Button>
+            <Button variant="outline" trailingIcon="play">
+              {HERO.secondaryCta}
+            </Button>
+          </div>
+
+          <ul className="mt-5 grid grid-cols-3 gap-x-1 gap-y-4 sm:grid-cols-5">
+            {TRUST_MARKS.map((mark) => (
+              <TrustItem key={mark.id} item={mark} size="sm" />
+            ))}
+          </ul>
+        </div>
+
+        <div className="lg:w-[62%] lg:shrink-0">
+          <ResponsiveImage
+            image={HERO_SCENE}
+            sizes="(min-width: 64rem) 62vw, 100vw"
+            priority
+            className="w-full bg-transparent lg:[mask-image:linear-gradient(to_right,transparent,#000_7%,#000_100%)]"
+            imageClassName="object-contain"
+          />
+        </div>
+      </div>
+    </section>
+  );
+}

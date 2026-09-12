@@ -1,0 +1,174 @@
+@import 'tailwindcss';
+
+/*
+ * Latin-only faces, declared here rather than importing fontsource's index.css.
+ * That index ships cyrillic, greek and vietnamese subsets as well; this site is
+ * English-only today, so those are ~180KB of build output nobody requests.
+ * Adding a language means adding its @font-face block back.
+ */
+@font-face {
+  font-family: 'Playfair Display Variable';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('@fontsource-variable/playfair-display/files/playfair-display-latin-wght-normal.woff2')
+    format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('@fontsource-variable/inter/files/inter-latin-wght-normal.woff2')
+    format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@import './tokens.css';
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    /* The closed nav drawer parks off-canvas and the marquee track is wider
+       than the viewport by design. Both are clipped visually, but they still
+       extend the document, so the root has to clip too or a phone can scroll
+       sideways into empty space. */
+    overflow-x: hidden;
+  }
+
+  /* Smooth scrolling is a preference, not a default. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-nl-cream-50);
+    color: var(--color-nl-ink-900);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* The comp is a long single page; never let a band push it sideways. */
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-wrap: balance;
+  }
+
+  p {
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  img,
+  svg,
+  video {
+    display: block;
+    max-width: 100%;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* One focus treatment for the whole site. Gold-700 clears 3:1 against both
+     the cream surfaces and the green bars, so a single ring works everywhere. */
+  :focus-visible {
+    outline: 2px solid var(--color-nl-gold-700);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Windows high-contrast mode strips brand colour; keep structure readable. */
+  @media (forced-colors: active) {
+    :focus-visible {
+      outline: 2px solid CanvasText;
+    }
+  }
+
+  ::selection {
+    background-color: var(--color-nl-green-800);
+    color: var(--color-nl-cream-50);
+  }
+}
+
+@layer utilities {
+  /* Bleeds a band to the viewport edge from inside a constrained parent. */
+  .full-bleed {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+  }
+
+  /* Horizontal snap strip used by the mobile hero, journey and testimonials. */
+  .snap-strip {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+
+  .snap-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Only the snap behaviour. Sizing stays with the child's own utilities —
+     a `flex` shorthand here outranks Tailwind's responsive variants and would
+     silently pin every child to its intrinsic width at wide breakpoints. */
+  .snap-strip > * {
+    scroll-snap-align: start;
+  }
+}
+
+@keyframes nl-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

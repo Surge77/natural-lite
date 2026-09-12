@@ -1,0 +1,62 @@
+{
+  "garlic": {
+    "accentColor": "#845452",
+    "sourceContent": "300x440",
+    "width": 220,
+    "height": 330
+  },
+  "onion": {
+    "accentColor": "#632947",
+    "sourceContent": "278x440",
+    "width": 220,
+    "height": 330
+  },
+  "ginger": {
+    "accentColor": "#a57943",
+    "sourceContent": "292x440",
+    "width": 220,
+    "height": 330
+  },
+  "carrot": {
+    "accentColor": "#b45f29",
+    "sourceContent": "282x440",
+    "width": 220,
+    "height": 330
+  },
+  "tomato": {
+    "accentColor": "#953828",
+    "sourceContent": "292x440",
+    "width": 220,
+    "height": 330
+  },
+  "amla": {
+    "accentColor": "#84751d",
+    "sourceContent": "302x452",
+    "width": 220,
+    "height": 330
+  },
+  "beetroot": {
+    "accentColor": "#612624",
+    "sourceContent": "292x452",
+    "width": 220,
+    "height": 330
+  },
+  "moringa": {
+    "accentColor": "#45661e",
+    "sourceContent": "290x452",
+    "width": 220,
+    "height": 330
+  },
+  "turmeric": {
+    "accentColor": "#b26e29",
+    "sourceContent": "280x452",
+    "width": 220,
+    "height": 330
+  },
+  "spinach": {
+    "accentColor": "#565f16",
+    "sourceContent": "280x452",
+    "width": 220,
+    "height": 330
+  }
+}
