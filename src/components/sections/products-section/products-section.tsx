@@ -12,11 +12,15 @@ const HEADING_ID = 'products-heading';
  */
 export function ProductsSection() {
   return (
-    <Section labelledBy={HEADING_ID} tone="creamWarm">
+    <Section id="products" labelledBy={HEADING_ID} tone="creamWarm">
       <Container>
         <SectionHeading id={HEADING_ID}>{SECTION_HEADINGS.products}</SectionHeading>
 
-        <ul className="mt-4 grid grid-cols-2 gap-2.5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <p className="mx-auto mt-2 max-w-xl text-center text-body text-nl-ink-500">
+          Pure ingredients, carefully processed in small batches and packed for everyday cooking.
+        </p>
+
+        <ul className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-4">
           {PRODUCTS.map((product) => (
             <li key={product.id}>
               <ProductCard product={product} className="h-full" />

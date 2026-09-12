@@ -1,5 +1,5 @@
-export { Button } from './button';
-export type { ButtonProps, ButtonSize, ButtonVariant } from './button';
+export { Button, ButtonLink } from './button';
+export type { ButtonLinkProps, ButtonProps, ButtonSize, ButtonVariant } from './button';
 export { CarouselArrow } from './carousel-arrow';
 export { Container } from './container';
 export { CountUp } from './count-up';

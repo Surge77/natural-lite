@@ -7,9 +7,10 @@ import process from 'node:process';
 
 import sharp from 'sharp';
 
-const REFERENCE =
-  process.argv[2] ??
-  'C:/Users/tdmne/.claude/image-cache/b2dc287c-c816-4949-b0c4-c209137bb081/1.png';
+// The comp is client material, so it lives in gitignored assets-source/ rather
+// than in the repo. This JPEG is a re-encode of the PNG originally sampled; the
+// band colours and contrast ratios in tokens.css reproduce from it exactly.
+const REFERENCE = process.argv[2] ?? 'assets-source/design-comp.jpeg';
 
 const toHex = (r, g, b) =>
   '#' + [r, g, b].map((c) => c.toString(16).padStart(2, '0')).join('').toUpperCase();

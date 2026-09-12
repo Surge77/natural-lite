@@ -12,7 +12,8 @@ export interface MobileNavDrawerProps {
 }
 
 /**
- * Full-screen navigation for viewports below `lg`.
+ * Full-screen navigation for viewports below `xl`, where seven links would
+ * otherwise crowd the logo and commerce controls.
  *
  * Scroll is locked while open, Tab is trapped inside, Escape closes, and focus
  * returns to the hamburger on close. The panel stays mounted so the slide
@@ -27,7 +28,7 @@ export function MobileNavDrawer({ isOpen, onClose }: MobileNavDrawerProps) {
   useFocusTrap(panelRef, isOpen, handleEscape);
 
   return (
-    <div className="lg:hidden" aria-hidden={!isOpen}>
+    <div className="xl:hidden" aria-hidden={!isOpen}>
       <button
         type="button"
         tabIndex={-1}
@@ -60,6 +61,7 @@ export function MobileNavDrawer({ isOpen, onClose }: MobileNavDrawerProps) {
               <li key={item.id} className="border-b border-nl-sand-400/60 last:border-0">
                 <a
                   href={item.href}
+                  onClick={onClose}
                   className="flex min-h-12 items-center justify-between text-body text-nl-ink-900"
                 >
                   {item.label}
@@ -74,6 +76,7 @@ export function MobileNavDrawer({ isOpen, onClose }: MobileNavDrawerProps) {
                       <li key={child.id}>
                         <a
                           href={child.href}
+                          onClick={onClose}
                           className="flex min-h-10 items-center text-caption text-nl-ink-500"
                         >
                           {child.label}

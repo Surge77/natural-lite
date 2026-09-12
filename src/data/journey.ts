@@ -12,8 +12,10 @@ export const JOURNEY_STEPS: readonly JourneyStep[] = [
     image: lifestyleImage(
       'journey-1',
       'A woman farmer harvesting fresh leafy greens in a field',
-      357,
-      237,
+      640,
+      427,
+      '#e9dfcc',
+      1280,
     ),
   },
   {
@@ -24,8 +26,10 @@ export const JOURNEY_STEPS: readonly JourneyStep[] = [
     image: lifestyleImage(
       'journey-2',
       'A worker in protective clothing sorting fresh produce for processing',
-      357,
-      237,
+      640,
+      427,
+      '#e9dfcc',
+      1280,
     ),
   },
   {
@@ -36,8 +40,10 @@ export const JOURNEY_STEPS: readonly JourneyStep[] = [
     image: lifestyleImage(
       'journey-3',
       'A laboratory technician examining a powder sample under a microscope',
-      357,
-      237,
+      640,
+      427,
+      '#e9dfcc',
+      1280,
     ),
   },
   {
@@ -47,9 +53,11 @@ export const JOURNEY_STEPS: readonly JourneyStep[] = [
     description: "Packed with care by women for your family's wellness.",
     image: lifestyleImage(
       'journey-4',
-      'Two women sealing Natural Lite pouches at a packaging bench',
-      357,
-      237,
+      'Three women carefully sealing natural food pouches at a clean packaging table',
+      640,
+      427,
+      '#e9dfcc',
+      1280,
     ),
   },
   {
@@ -60,8 +68,10 @@ export const JOURNEY_STEPS: readonly JourneyStep[] = [
     image: lifestyleImage(
       'journey-5',
       'A woman holding a finished Natural Lite pouch in a home kitchen',
-      357,
-      237,
+      640,
+      427,
+      '#e9dfcc',
+      1280,
     ),
   },
 ];

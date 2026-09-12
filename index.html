@@ -10,12 +10,21 @@
       content="Natural Lite superfood powders: 100% natural, no additives, lab tested and made in India. Sourced and packed by women, from farm to your family's kitchen."
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <!-- The hero scene is the LCP element; fetch it alongside the HTML. -->
+    <!-- Art-directed hero preloads: fetch only the source this viewport uses. -->
     <link
       rel="preload"
       as="image"
       href="/assets/lifestyle/hero-scene.avif"
       type="image/avif"
+      media="(min-width: 1024px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/lifestyle/hero-mobile.avif"
+      type="image/avif"
+      media="(max-width: 1023px)"
       fetchpriority="high"
     />
   </head>

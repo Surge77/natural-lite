@@ -1,14 +1,14 @@
 /**
  * Builds a side-by-side of the reference comp and the current build so layout
  * drift is measured rather than eyeballed. Dev-only.
- * Usage: node scripts/compare.mjs <screenshot.png> [outfile]
+ * Usage: node scripts/compare.mjs <screenshot.png> [outfile] [comp]
  */
 import process from 'node:process';
 import sharp from 'sharp';
 
-const REF = 'C:/Users/tdmne/.claude/image-cache/b2dc287c-c816-4949-b0c4-c209137bb081/1.png';
 const shot = process.argv[2];
 const out = process.argv[3] ?? 'scratch-compare.png';
+const REF = process.argv[4] ?? 'assets-source/design-comp.jpeg';
 const WIDTH = 700;
 
 const ref = await sharp(REF).resize({ width: WIDTH }).toBuffer();

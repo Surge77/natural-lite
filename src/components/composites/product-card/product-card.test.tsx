@@ -29,22 +29,30 @@ describe('ProductCard', () => {
     expect(screen.getByRole('heading', { name: product.name })).toBeInTheDocument();
   });
 
-  it('keeps price and weight out of sight but in the add control name', () => {
-    // The approved comp shows no price on the card, so it reaches screen
-    // readers through the button's accessible name instead of visible text.
+  it('shows the price and weight before the add control', () => {
     renderCard();
 
-    expect(screen.queryByText(/₹349/)).not.toBeInTheDocument();
+    expect(screen.getByText('₹349')).toBeInTheDocument();
+    expect(screen.getByText('100 g')).toBeInTheDocument();
     expect(
       screen.getByRole('button', { name: /₹349 for 100 grams/ }),
     ).toBeInTheDocument();
+  });
+
+  it('uses the supplied high-resolution pouch photograph', () => {
+    renderCard();
+
+    expect(screen.getByRole('img', { name: /Beetroot Powder/i })).toHaveAttribute(
+      'src',
+      '/assets/products/beetroot@2x.webp',
+    );
   });
 
   it('labels the product shot for screen readers', () => {
     renderCard();
 
     expect(
-      screen.getByRole('img', { name: /Beetroot Powder pouch beside the fresh beetroot/i }),
+      screen.getByRole('img', { name: /Natural Lite Premium Beetroot Powder pouch/i }),
     ).toBeInTheDocument();
   });
 

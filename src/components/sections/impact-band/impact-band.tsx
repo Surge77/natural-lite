@@ -15,7 +15,12 @@ export function ImpactBand() {
   const { ref, isVisible } = useRevealOnScroll<HTMLElement>();
 
   return (
-    <section ref={ref} aria-labelledby={HEADING_ID} className="bg-nl-maroon-900 py-7 md:py-8">
+    <section
+      id="impact"
+      ref={ref}
+      aria-labelledby={HEADING_ID}
+      className="scroll-mt-24 bg-nl-maroon-900 py-9 md:py-11"
+    >
       <Container>
         <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:gap-10">
           <div className="lg:w-72 lg:shrink-0">

@@ -15,7 +15,7 @@ export const TESTIMONIALS: readonly Testimonial[] = [
     authorName: 'Priya S.',
     authorLocation: 'Pune',
     rating: 5,
-    avatar: lifestyleImage('avatar-1', 'Portrait of Priya S. from Pune', 123, 123),
+    avatar: lifestyleImage('avatar-1', 'Portrait of Priya S. from Pune', 160, 160, '#e9dfcc', 320),
   },
   {
     id: 'neha-bengaluru',
@@ -24,7 +24,7 @@ export const TESTIMONIALS: readonly Testimonial[] = [
     authorName: 'Neha R.',
     authorLocation: 'Bengaluru',
     rating: 5,
-    avatar: lifestyleImage('avatar-2', 'Portrait of Neha R. from Bengaluru', 123, 123),
+    avatar: lifestyleImage('avatar-2', 'Portrait of Neha R. from Bengaluru', 160, 160, '#e9dfcc', 320),
   },
   {
     id: 'anjali-nashik',
@@ -33,7 +33,7 @@ export const TESTIMONIALS: readonly Testimonial[] = [
     authorName: 'Anjali M.',
     authorLocation: 'Nashik',
     rating: 5,
-    avatar: lifestyleImage('avatar-3', 'Portrait of Anjali M. from Nashik', 123, 123),
+    avatar: lifestyleImage('avatar-3', 'Portrait of Anjali M. from Nashik', 160, 160, '#e9dfcc', 320),
   },
 ];
 
@@ -51,6 +51,6 @@ export const COMMUNITY_POSTS: readonly CommunityPost[] = COMMUNITY_ALTS.map(
   (alt, index) => ({
     id: `community-${index + 1}`,
     href: BRAND.instagramUrl,
-    image: lifestyleImage(`community-${index + 1}`, alt, 276, 276),
+    image: lifestyleImage(`community-${index + 1}`, alt, 420, 420, '#e9dfcc', 840),
   }),
 );

@@ -6,12 +6,14 @@ export type SectionTone = 'cream' | 'creamWarm' | 'soft' | 'white' | 'green' | '
 
 export interface SectionProps {
   readonly children: ReactNode;
+  readonly id?: string;
   /** id of the heading that names this landmark. */
   readonly labelledBy: string;
   readonly tone?: SectionTone;
   readonly className?: string;
   /** Bands with their own vertical rhythm (the impact band) opt out. */
   readonly padded?: boolean;
+  readonly spacing?: 'compact' | 'standard' | 'spacious';
 }
 
 const TONES: Record<SectionTone, string> = {
@@ -33,15 +35,24 @@ const TONES: Record<SectionTone, string> = {
  */
 export function Section({
   children,
+  id,
   labelledBy,
   tone = 'cream',
   className,
   padded = true,
+  spacing = 'standard',
 }: SectionProps) {
+  const spacingClass = {
+    compact: 'py-7 md:py-9',
+    standard: 'py-10 md:py-14',
+    spacious: 'py-12 md:py-18',
+  }[spacing];
+
   return (
     <section
+      id={id}
       aria-labelledby={labelledBy}
-      className={cn(TONES[tone], padded && 'py-6 md:py-7', className)}
+      className={cn(TONES[tone], 'scroll-mt-24', padded && spacingClass, className)}
     >
       {children}
     </section>

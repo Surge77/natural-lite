@@ -10,7 +10,7 @@ export interface QuantityStepperProps {
 }
 
 /**
- * Replaces "Shop Now" on a card once the product is in the cart.
+ * Replaces "Add to cart" on a card once the product is in the cart.
  *
  * Keeps the button footprint identical so the grid does not reflow when a card
  * switches between the two states.
@@ -35,7 +35,7 @@ export function QuantityStepper({
         aria-label={
           quantity === 1 ? `Remove ${productName} from cart` : `Decrease ${productName} quantity`
         }
-        className="inline-flex size-9 items-center justify-center rounded text-nl-green-900 transition-colors hover:bg-nl-cream-100"
+        className="inline-flex size-11 items-center justify-center rounded text-nl-green-900 transition-[background-color,transform] hover:bg-nl-cream-100 active:scale-[0.96] motion-reduce:transform-none"
       >
         <Icon name="minus" size={14} />
       </button>
@@ -49,7 +49,7 @@ export function QuantityStepper({
         type="button"
         onClick={() => onChange(quantity + 1)}
         aria-label={`Increase ${productName} quantity`}
-        className="inline-flex size-9 items-center justify-center rounded text-nl-green-900 transition-colors hover:bg-nl-cream-100"
+        className="inline-flex size-11 items-center justify-center rounded text-nl-green-900 transition-[background-color,transform] hover:bg-nl-cream-100 active:scale-[0.96] motion-reduce:transform-none"
       >
         <Icon name="plus" size={14} />
       </button>

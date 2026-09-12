@@ -18,7 +18,7 @@ export function TestimonialsSection() {
     useCarousel<HTMLUListElement>(TESTIMONIALS.length);
 
   return (
-    <Section labelledBy={HEADING_ID} tone="cream">
+    <Section id="testimonials" labelledBy={HEADING_ID} tone="cream" spacing="standard">
       <Container>
         <SectionHeading id={HEADING_ID} withLeaf>
           {SECTION_HEADINGS.testimonials}

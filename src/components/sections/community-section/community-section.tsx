@@ -7,7 +7,7 @@ const HEADING_ID = 'community-heading';
 /** The Instagram strip: seven square tiles followed by the follow call-to-action. */
 export function CommunitySection() {
   return (
-    <Section labelledBy={HEADING_ID} tone="cream">
+    <Section id="community" labelledBy={HEADING_ID} tone="cream" spacing="standard">
       <Container>
         <SectionHeading id={HEADING_ID}>{SECTION_HEADINGS.community}</SectionHeading>
 

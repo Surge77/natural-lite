@@ -1,5 +1,5 @@
 export { BRAND, BRAND_STORY, CONTACT, HERO, SECTION_HEADINGS } from './brand';
-export { BRAND_STORY_IMAGE, HERO_SCENE } from './hero';
+export { BRAND_STORY_IMAGE, HERO_MOBILE_SCENE, HERO_SCENE } from './hero';
 export { JOURNEY_STEPS } from './journey';
 export {
   CONTACT_ICONS,

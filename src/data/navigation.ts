@@ -1,27 +1,26 @@
 import type { FooterColumn, IconLabel, NavItem, NavLink } from '@/types';
 
-import { CONTACT } from './brand';
+import { BRAND, CONTACT } from './brand';
 
 /** Primary navigation. Only "Products" carries a dropdown in the comp. */
 export const NAV_ITEMS: readonly NavItem[] = [
-  { id: 'home', label: 'Home', href: '/' },
-  { id: 'our-story', label: 'Our Story', href: '/our-story' },
+  { id: 'home', label: 'Home', href: '#top' },
+  { id: 'our-story', label: 'Our Story', href: '#brand-story' },
   {
     id: 'products',
     label: 'Products',
-    href: '/products',
+    href: '#products',
     children: [
-      { id: 'all', label: 'All Products', href: '/products' },
-      { id: 'vegetable', label: 'Vegetable Powders', href: '/products/vegetable' },
-      { id: 'leaf', label: 'Leaf Powders', href: '/products/leaf' },
-      { id: 'spice', label: 'Spice Powders', href: '/products/spice' },
-      { id: 'combo', label: 'Combo Packs', href: '/products/combo' },
+      { id: 'all', label: 'All Products', href: '#products' },
+      { id: 'vegetable', label: 'Vegetable Powders', href: '#product-beetroot' },
+      { id: 'leaf', label: 'Leaf Powders', href: '#product-spinach' },
+      { id: 'spice', label: 'Spice Powders', href: '#product-turmeric' },
     ],
   },
-  { id: 'wellness', label: 'Wellness', href: '/wellness' },
-  { id: 'women-empowerment', label: 'Women Empowerment', href: '/women-empowerment' },
-  { id: 'blog', label: 'Blog', href: '/blog' },
-  { id: 'contact', label: 'Contact', href: '/contact' },
+  { id: 'wellness', label: 'Wellness', href: '#trust' },
+  { id: 'women-empowerment', label: 'Women Empowerment', href: '#impact' },
+  { id: 'community', label: 'Community', href: '#community' },
+  { id: 'contact', label: 'Contact', href: '#contact' },
 ];
 
 export const FOOTER_COLUMNS: readonly FooterColumn[] = [
@@ -29,33 +28,32 @@ export const FOOTER_COLUMNS: readonly FooterColumn[] = [
     id: 'shop',
     heading: 'Shop',
     links: [
-      { id: 'all', label: 'All Products', href: '/products' },
-      { id: 'vegetable', label: 'Vegetable Powders', href: '/products/vegetable' },
-      { id: 'leaf', label: 'Leaf Powders', href: '/products/leaf' },
-      { id: 'spice', label: 'Spice Powders', href: '/products/spice' },
-      { id: 'combo', label: 'Combo Packs', href: '/products/combo' },
+      { id: 'all', label: 'All Products', href: '#products' },
+      { id: 'beetroot', label: 'Beetroot Powder', href: '#product-beetroot' },
+      { id: 'turmeric', label: 'Turmeric Powder', href: '#product-turmeric' },
+      { id: 'moringa', label: 'Moringa Powder', href: '#product-moringa' },
+      { id: 'amla', label: 'Amla Powder', href: '#product-amla' },
     ],
   },
   {
     id: 'company',
     heading: 'Company',
     links: [
-      { id: 'our-story', label: 'Our Story', href: '/our-story' },
-      { id: 'women', label: 'Women Empowerment', href: '/women-empowerment' },
-      { id: 'quality', label: 'Quality Promise', href: '/quality-promise' },
-      { id: 'blog', label: 'Blog', href: '/blog' },
-      { id: 'careers', label: 'Careers', href: '/careers' },
+      { id: 'our-story', label: 'Our Story', href: '#brand-story' },
+      { id: 'women', label: 'Women Empowerment', href: '#impact' },
+      { id: 'quality', label: 'Quality Promise', href: '#journey' },
+      { id: 'community', label: 'Community', href: '#community' },
     ],
   },
   {
     id: 'help',
     heading: 'Help',
     links: [
-      { id: 'faqs', label: 'FAQs', href: '/faqs' },
-      { id: 'shipping', label: 'Shipping & Delivery', href: '/shipping' },
-      { id: 'returns', label: 'Returns & Refunds', href: '/returns' },
-      { id: 'terms', label: 'Terms & Conditions', href: '/terms' },
-      { id: 'privacy', label: 'Privacy Policy', href: '/privacy' },
+      { id: 'product-help', label: 'Product questions', href: `${CONTACT.emailHref}?subject=Product%20question` },
+      { id: 'shipping', label: 'Shipping questions', href: `${CONTACT.emailHref}?subject=Shipping%20question` },
+      { id: 'returns', label: 'Returns support', href: `${CONTACT.emailHref}?subject=Returns%20support` },
+      { id: 'whatsapp', label: 'Order on WhatsApp', href: BRAND.whatsappUrl },
+      { id: 'contact', label: 'Contact us', href: '#contact' },
     ],
   },
 ];

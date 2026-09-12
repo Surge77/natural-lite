@@ -16,7 +16,7 @@ import {
  */
 export function SiteFooter() {
   return (
-    <footer className="bg-nl-green-900 text-nl-cream-50">
+    <footer id="contact" className="scroll-mt-24 bg-nl-green-900 text-nl-cream-50">
       <Container className="py-4 md:py-5">
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-5 lg:gap-6">
           <div className="flex flex-col items-start gap-3 lg:col-span-1">

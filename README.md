@@ -19,11 +19,16 @@ npm run dev        # http://localhost:5173
 | `npm run test:coverage` | Coverage report |
 | `npm run lint` | oxlint |
 | `npm run assets:prepare` | Rebuild product pouch images from the client JPEGs |
-| `npm run assets:artwork` | Re-extract photography from the reference comp |
+| `npm run assets:placeholders` | Regenerate tinted placeholder images |
 | `npm run tokens:extract` | Re-sample brand colours from the reference comp |
 
 The three asset commands are dev-only; their output is committed, so a fresh
 clone needs nothing but `npm install`.
+
+They read the client's original photography and the design comp from
+`assets-source/`, which is gitignored because that material is not ours to
+publish. Point them elsewhere by passing a path (`npm run tokens:extract -- <comp>`).
+Without that folder the app still builds and runs — only these tools need it.
 
 ## Stack
 
@@ -88,6 +93,6 @@ keyboard-native `<details>` accordions.
 ## Known limitations
 
 Read `docs/ASSET-MANIFEST.md` and `docs/CLIENT-QUESTIONS.md` before launch. In
-short: the photography is upscaled from a low-resolution comp and should be
-replaced with originals, prices and contact details are placeholders, and the
-hero's seal and brand statement are baked into the supplied artwork.
+short: the new AI-assisted lifestyle photography requires client approval,
+prices and contact details remain provisional, and the code-drawn logo should
+be replaced when the official SVG is supplied.

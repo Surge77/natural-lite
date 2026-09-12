@@ -6,7 +6,8 @@ export const BRAND = {
   footerTagline: 'Pure by Nature. Powered by Women.',
   instagramHandle: '@naturallite.india',
   instagramUrl: 'https://instagram.com/naturallite.india',
-  copyrightYear: 2025,
+  whatsappUrl: 'https://wa.me/911234567890',
+  copyrightYear: new Date().getFullYear(),
 } as const;
 
 export const CONTACT = {
